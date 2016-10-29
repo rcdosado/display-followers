@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue JS Practice</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/vuejs-paginator/2.0.0/vuejs-paginator.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div id="app" class="container">
+ 
+
+		<div class="row"> <h1>My Github Followers</h1></div>
+
+		<h4>Username:</h4>    
+		<div class="input-group">  
+			<input type="text" class="form-control" placeholder="Enter user name..." v-model="followee">
+		    <span class="input-group-btn">
+		        <button class="btn btn-default" type="button" @click="fetchData">Go!</button>
+	      	</span>
+	   	</div><!-- /input-group -->
+
+		<h4>Search followers:</h4><input type="text" class="form-control" v-model="filterkey">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+		            <th><a href="#" @click="sortvia('id')">id</a></th>
+		            <th><a href="#" @click="sortvia('login')">login</a></th>
+		            <th><a href="#" @click="sortvia('html_url')">URL</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in filteredUsers">
+					<td>{{item.id}}</td>
+					<td>{{item.login}}</td>
+					<td><a v-bind:href="item.html_url" target="_blank">{{item.html_url}}</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	
+
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
